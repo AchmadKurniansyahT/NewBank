@@ -97,14 +97,12 @@ input_df = pd.DataFrame([{
     "job": job,
     "marital": marital,
     "education": education,
-    "balance": balance,
     "housing": housing,
     "loan": loan,
 
     # ===============================
     # DEFAULT VALUE (TIDAK DITAMPILKAN)
     # ===============================
-    "duration": 120,
     "campaign": 1,
     "default": "no",
     "contact": "cellular",
@@ -135,6 +133,7 @@ if st.button("🔍 Predict"):
         st.success(f"✅ **Subscribe**\n\nProbability: **{pred_prob:.2%}**")
     else:
         st.error(f"❌ **Not Subscribe**\n\nProbability: **{pred_prob:.2%}**")
+
 
 
 
