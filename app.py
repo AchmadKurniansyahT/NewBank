@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import pickle
 
 # ==================================================
 # PAGE CONFIG (HARUS PALING ATAS)
@@ -15,7 +16,9 @@ st.set_page_config(
 # ==================================================
 @st.cache_resource
 def load_model():
-    return joblib.load("model_telemarketing_campaign.pkl")
+    with open("model_telemarketing_campaign.pkl", "rb") as f:
+        model_rf = pickle.load(f)
+    return model_rf
 
 model = load_model()
 
@@ -132,4 +135,5 @@ if st.button("🔍 Predict"):
         st.success(f"✅ **Subscribe**\n\nProbability: **{pred_prob:.2%}**")
     else:
         st.error(f"❌ **Not Subscribe**\n\nProbability: **{pred_prob:.2%}**")
+
 
